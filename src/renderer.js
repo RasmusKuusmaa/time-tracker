@@ -19,9 +19,17 @@ function startTimer() {
         }, 1000)
     }
 }
+function resetTimer() {
+    if (!isStarted){
+        elapsed = 0;
+        document.getElementById('timer').innerText = formatTime(elapsed)
+    }
+}
+
 function stopTimer() {
     isStarted = false;
     clearInterval(timerinterval);
 }
 document.getElementById('start').addEventListener('click', startTimer);
 document.getElementById('stop').addEventListener('click', stopTimer)
+document.getElementById('reset').addEventListener('click', resetTimer)
