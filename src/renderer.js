@@ -1,6 +1,6 @@
 let timerinterval;
 let elapsed = 0;
-
+let tot = 0;
 function formatTime(seconds){
     const hours = String(Math.floor(seconds / 3600)).padStart(2, '0');
     const minutes = String(Math.floor((seconds % 3600) /60)).padStart(2, '0');
@@ -13,7 +13,9 @@ function startTimer() {
         isStarted = true
         timerinterval = setInterval(() => {
             elapsed++;
+            tot++;
             document.getElementById('timer').innerText = formatTime(elapsed)
+            document.getElementById('tot').innerText = formatTime(tot)
         }, 1000)
     }
 }
