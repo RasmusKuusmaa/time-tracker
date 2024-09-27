@@ -1,6 +1,7 @@
 let timerinterval;
 let elapsed = 0;
-let tot = 0;
+let tot = parseInt(localStorage.getItem('tot')) || 0;
+document.getElementById('tot').innerText = formatTime(tot)
 function formatTime(seconds){
     const hours = String(Math.floor(seconds / 3600)).padStart(2, '0');
     const minutes = String(Math.floor((seconds % 3600) /60)).padStart(2, '0');
@@ -29,6 +30,7 @@ function resetTimer() {
 function stopTimer() {
     isStarted = false;
     clearInterval(timerinterval);
+    localStorage.setItem('tot', tot);
 }
 document.getElementById('start').addEventListener('click', startTimer);
 document.getElementById('stop').addEventListener('click', stopTimer)
