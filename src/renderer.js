@@ -7,13 +7,18 @@ function formatTime(seconds){
     const secs = String(seconds % 60).padStart(2, '0'); 
     return `${hours}:${minutes}:${secs}`
 }
+let isStarted = false;
 function startTimer() {
-    timerinterval = setInterval(() => {
-        elapsed++;
-        document.getElementById('timer').innerText = formatTime(elapsed)
-    }, 1000)
+    if (!isStarted) {
+        isStarted = true
+        timerinterval = setInterval(() => {
+            elapsed++;
+            document.getElementById('timer').innerText = formatTime(elapsed)
+        }, 1000)
+    }
 }
 function stopTimer() {
+    isStarted = false;
     clearInterval(timerinterval);
 }
 document.getElementById('start').addEventListener('click', startTimer);
